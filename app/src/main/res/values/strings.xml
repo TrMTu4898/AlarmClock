@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AlarmClock</string>
+    <string name="title_list_alarm">Báo Thức</string>
+    <string name="title_stop_watch">Đồng Hồ Bấm Giờ</string>
+    <string name="button_add_new_clock">AddNewClock</string>
+    <string name="stop_watch_view">0:00:00</string>
+</resources>

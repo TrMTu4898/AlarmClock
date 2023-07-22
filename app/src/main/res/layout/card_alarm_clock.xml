@@ -1,0 +1,145 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/rounded_background"
+    >
+
+    <RelativeLayout
+        android:id="@+id/expandButtonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Thời gian báo thức - Top Left -->
+        <TextView
+            android:id="@+id/alarmTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="07:30"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <!-- Button image ic_arrow_drop (on/off) - Top Right -->
+        <ImageButton
+            android:id="@+id/expandButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_drop"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="Expand Alarm Details" />
+
+
+        <!-- Text date - Bottom Left -->
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <!-- Button isActivate (bật tắt báo thức) - Bottom Right -->
+        <Switch
+            android:id="@+id/activateSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:textOff="Off"
+            android:textOn="On" />
+
+        <!-- Chi tiết báo thức -->
+        <LinearLayout
+            android:id="@+id/detailsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/dateTextView"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Các select button: T2 T3 T4 T5 T6 T7 CN -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/t2Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T2" />
+                <Button
+                    android:id="@+id/t3Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T3" />
+                <Button
+                    android:id="@+id/t4Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T4" />
+                <Button
+                    android:id="@+id/t5Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T5" />
+                <Button
+                    android:id="@+id/t6Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T6" />
+                <Button
+                    android:id="@+id/t7Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T7" />
+                <Button
+                    android:id="@+id/cnButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CN" />
+            </LinearLayout>
+
+            <!-- Button image ic_add_alert để cài đặt chuông báo thức -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_alert"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_marginTop="8dp" />
+
+            <!-- Button image ic_vibrate: bật tắt chế độ rung -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_vibrate"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_marginTop="8dp" />
+
+            <!-- Button image ic_delete: xoá báo thức -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

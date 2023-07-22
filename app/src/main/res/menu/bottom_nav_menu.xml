@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_alarm"
+        android:icon="@drawable/ic_alarm_clock"
+        android:title="@string/title_list_alarm" />
+
+    <item
+        android:id="@+id/navigation_stop"
+        android:icon="@drawable/ic_stop_watch"
+        android:title="@string/title_stop_watch" />
+
+</menu>

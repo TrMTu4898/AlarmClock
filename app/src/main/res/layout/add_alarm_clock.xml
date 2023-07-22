@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+
+    <!-- Topleft: Chọn thời gian -->
+    <TextView
+        android:id="@+id/selectTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn thời gian"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <!-- Center: 'Giờ' : 'Phút' từ timepicker -->
+
+    <LinearLayout
+        android:id="@+id/selectButtonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@+id/cancelButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
+        <!-- Cột 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/t2ButtonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T2"
+                android:background="@drawable/select_button_background"
+                android:textOn="T2"
+                android:textOff="T2"
+                android:textColor="@color/unselected_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/t3ButtonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T3"
+                android:background="@drawable/select_button_background"
+                android:textOn="T3"
+                android:textOff="T3"
+                android:textColor="@color/unselected_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ToggleButton
+                android:id="@+id/t4ButtonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T4"
+                android:background="@drawable/select_button_background"
+                android:textOn="T4"
+                android:textOff="T4"
+                android:textColor="@color/unselected_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/t5ButtonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T5"
+                android:background="@drawable/select_button_background"
+                android:textOn="T5"
+                android:textOff="T5"
+                android:textColor="@color/unselected_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/t6ButtonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T6"
+                android:background="@drawable/select_button_background"
+                android:textOn="T6"
+                android:textOff="T6"
+                android:textColor="@color/unselected_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/t7ButtonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T7"
+                android:background="@drawable/select_button_background"
+                android:textOn="T7"
+                android:textOff="T7"
+                android:textColor="@color/unselected_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/cnButtonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CN"
+                android:background="@drawable/select_button_background"
+                android:textOn="CN"
+                android:textOff="CN"
+                android:textColor="@color/unselected_text_color"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true" />
+        </LinearLayout>
+
+        <!-- Các cột khác -->
+        <!-- ... -->
+
+    </LinearLayout>
+
+    <!-- Center: TimePicker dạng đồng hồ -->
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        android:timePickerMode="clock" />
+
+
+    <!-- Left bottom: Text button - Huỷ -->
+    <TextView
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Huỷ"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/okButton"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- Right bottom: Text button - OK -->
+    <TextView
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:textSize="20sp"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+</RelativeLayout>
