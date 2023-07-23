@@ -18,6 +18,21 @@ public class AlarmClockModel {
         this.id = id;
     }
 
+    public AlarmClockModel(int hour, int id, int minute, int isActive, int isVibrate, int t2, int t3, int t4, int t5, int t6, int t7, int cn) {
+        this.hour = hour;
+        this.id = id;
+        this.minute = minute;
+        this.isActive = isActive;
+        this.isVibrate = isVibrate;
+        this.t2 = t2;
+        this.t3 = t3;
+        this.t4 = t4;
+        this.t5 = t5;
+        this.t6 = t6;
+        this.t7 = t7;
+        this.cn = cn;
+    }
+
     public AlarmClockModel(int hour, int minute, int isActive, int isVibrate, int t2, int t3, int t4, int t5, int t6, int t7, int cn) {
         this.hour = hour;
         this.minute = minute;
@@ -149,5 +164,19 @@ public class AlarmClockModel {
 
     public View getBinding() {
         return binding;
+    }
+
+    public AlarmClockModel(int hour, int minute, int isActive, int isVibrate, boolean[] selectedDays) {
+        this.hour = hour;
+        this.minute = minute;
+        this.isActive = isActive;
+        this.isVibrate = isVibrate;
+        this.t2 = selectedDays[0] ? 1 : 0;
+        this.t3 = selectedDays[1] ? 1 : 0;
+        this.t4 = selectedDays[2] ? 1 : 0;
+        this.t5 = selectedDays[3] ? 1 : 0;
+        this.t6 = selectedDays[4] ? 1 : 0;
+        this.t7 = selectedDays[5] ? 1 : 0;
+        this.cn = selectedDays[6] ? 1 : 0;
     }
 }

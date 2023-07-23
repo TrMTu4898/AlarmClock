@@ -30,10 +30,10 @@
 
         <!-- Button image ic_arrow_drop (on/off) - Top Right -->
         <ImageButton
-            android:id="@+id/expandButton"
+            android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_drop"
+            android:src="@drawable/ic_delete"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"

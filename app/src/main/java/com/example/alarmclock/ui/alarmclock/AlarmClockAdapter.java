@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import java.util.List;
 public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.AlarmViewHolder> {
 
     private List<AlarmClockModel> alarmList;
+    private OnItemClickListener clickListener;
 
     public AlarmClockAdapter(List<AlarmClockModel> alarmList) {
         this.alarmList = alarmList;
@@ -29,8 +31,6 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.Al
     @Override
     public AlarmViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_alarm_clock, parent, false);
-        AlarmViewHolder viewHolder = new AlarmViewHolder(view);
-        viewHolder.dateTextView.setTag("date_" + viewHolder.getAdapterPosition());
         return new AlarmViewHolder(view);
     }
 
@@ -67,7 +67,15 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.Al
         holder.t7Button.setSelected(alarm.getT7() == 1);
         holder.cnButton.setSelected(alarm.getCn() == 1);
 
-        // Set other button click listeners here if needed (e.g., adding/removing days, setting alarm sound, etc.)
+        // Set button click listeners
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (clickListener != null) {
+                    clickListener.onDeleteClick(holder.getAdapterPosition());
+                }
+            }
+        });
     }
 
     @Override
@@ -75,7 +83,15 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.Al
         return alarmList.size();
     }
 
-    static class AlarmViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(OnItemClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onDeleteClick(int position);
+    }
+
+    public static class AlarmViewHolder extends RecyclerView.ViewHolder {
         private TextView alarmTimeTextView;
         private ImageButton expandButton;
         private RelativeLayout expandButtonContainer;
@@ -83,10 +99,12 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.Al
         private Switch activateSwitch;
         private Button t2Button, t3Button, t4Button, t5Button, t6Button, t7Button, cnButton;
         private LinearLayout detailsLayout;
+        private ImageButton deleteButton;
+
         AlarmViewHolder(View itemView) {
             super(itemView);
             alarmTimeTextView = itemView.findViewById(R.id.alarmTimeTextView);
-            expandButton = itemView.findViewById(R.id.expandButton);
+            expandButton = itemView.findViewById(R.id.deleteButton);
             expandButtonContainer = itemView.findViewById(R.id.expandButtonContainer);
             dateTextView = itemView.findViewById(R.id.dateTextView);
             dateTextView.setTag("date_" + getAdapterPosition());
@@ -99,6 +117,7 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.Al
             t7Button = itemView.findViewById(R.id.t7Button);
             cnButton = itemView.findViewById(R.id.cnButton);
             detailsLayout = itemView.findViewById(R.id.detailsLayout);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }
 }

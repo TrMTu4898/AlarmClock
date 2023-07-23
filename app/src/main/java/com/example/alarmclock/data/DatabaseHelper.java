@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "alarm_database";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 10;
 
     private static final String TABLE_NAME = "alarms";
     private static final String COLUMN_ID = "id";
@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Phương thức thêm mới báo thức vào cơ sở dữ liệu
-    public long addAlarm(AlarmClockModel alarm) {
+    public int addAlarm(AlarmClockModel alarm) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_HOUR, alarm.getHour());
@@ -78,7 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_T7, alarm.getT7());
         values.put(COLUMN_CN, alarm.getCn());
 
-        long id = db.insert(TABLE_NAME, null, values);
+        int id = (int) db.insert(TABLE_NAME, null, values);
         db.close();
         return id;
     }
@@ -91,6 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID));
                 int hour = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_HOUR));
                 int minute = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_MINUTE));
                 int isActive = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_ACTIVE));
@@ -103,7 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int t7 = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_T7));
                 int cn = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CN));
 
-                AlarmClockModel alarm = new AlarmClockModel(hour,minute,isActive,isVibrate,t2,t3,t4,t5,t6,t7,cn);
+                AlarmClockModel alarm = new AlarmClockModel(hour,id,minute,isActive,isVibrate,t2,t3,t4,t5,t6,t7,cn);
                 alarmList.add(alarm);
             } while (cursor.moveToNext());
         }
@@ -135,11 +136,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Phương thức xóa báo thức khỏi cơ sở dữ liệu
-    public void deleteAlarm(int id) {
+    public boolean deleteAlarm(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        int rowsAffected = db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
+        return rowsAffected > 0;
     }
+
     public int getLastInsertID() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT last_insert_rowid() AS last_id", null);
